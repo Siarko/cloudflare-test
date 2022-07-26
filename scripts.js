@@ -1,20 +1,27 @@
-window.onload = function () {
-  var mainImage = document.getElementById("mainImage");
-  var images = [];
-  var thumbnails = document.getElementsByClassName("thumbnail");
-  var currentThumbnail = thumbnails[0];
-  currentThumbnail.className += " current";
-  
-  for (var i = 0; i < thumbnails.length; i++) {
-    images.push(new Image());
-    images[i].id = "image_" + i;
-    mainImage.appendChild(images[i]);
-    thumbnails[i].onmouseover = (function () {
-      currentThumbnail.className += " current";
-      document.getElementById("image_") = this.getAttribute("src");
+document.addEventListener('DOMContentLoaded', function () {
+  let thumbnails = document.getElementsByClassName("thumbnail");
+  let mainImage = document.getElementById('mainImage');
+
+  for (let i = 0; i < thumbnails.length; i++) {
+    let image = document.createElement('img'); //to samo co new Image();
+    let thumb = thumbnails[i];
+    let imageId = "image_" + i;
+
+    thumb.dataset.id = imageId;
+    image.id = imageId;
+    image.src = thumb.src;
+    mainImage.appendChild(image);
+
+    thumb.addEventListener('mouseover', function () {
+      let bigImage = document.getElementById(this.dataset.id);
+      bigImage.classList.add('visible');
     });
-    thumbnails[i].onmouseleave = function () {
-      mainImage.classList.remove("visible");
-    };
+
+    thumb.addEventListener('mouseleave', function () {
+      let bigImage = document.getElementById(this.dataset.id);
+      bigImage.classList.remove('visible');
+    });
+
   }
-};
+
+});
