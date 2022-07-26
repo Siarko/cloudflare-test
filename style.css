@@ -1,0 +1,33 @@
+.thumbnail {
+  width: 60px;
+}
+
+.thumbnail:hover {
+  border-bottom: 2px solid red;
+  margin-bottom: -2px;
+}
+
+#mainImage {
+  height: 300px;
+  width: 300px;
+  margin-bottom: 10px;
+  transition: opacity 0.5s;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+#mainImage img
+{
+    opacity: 0;
+}
+
+.visible {
+  opacity: 1 !important;
+}
+
+.current {
+  border-bottom: 2px solid red;
+  margin-bottom: -2px;
+}
